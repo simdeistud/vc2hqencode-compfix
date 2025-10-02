@@ -43,7 +43,7 @@ LT_INIT(disable-static win32-dll)
 
 AC_PROG_CXX
 AM_PROG_CC_C_O
-
+CXXFLAGS="$CXXFLAGS -std=c++11"
 AC_CXX_HAVE_SSTREAM
 
 AC_CONFIG_SRCDIR([vc2hqencode/vc2hqencode.h])
@@ -61,9 +61,9 @@ debug_default="no"
 AC_ARG_ENABLE(debug, [  --enable-debug=[no/yes] turn on debugging
 					   [default=$debug_default]],, enable_debug=$debug_default)
 if test "x$enable_debug" = "xyes"; then
-		 VC2HQENCODE_CFLAGS="$VC2HQENCODE_CFLAGS -g -Og -DDEBUG"
-		 CXXFLAGS="$CXXFLAGS -O0"
-     VC2HQENCODE_LDFLAGS="$VC2HQENCODE_LDFLAGS -pg"
+    VC2HQENCODE_CFLAGS="$VC2HQENCODE_CFLAGS -g -Og -DDEBUG"
+    CXXFLAGS="$CXXFLAGS -O0"
+    VC2HQENCODE_LDFLAGS="$VC2HQENCODE_LDFLAGS -pg"
 AC_MSG_RESULT(yes)
 else
 AC_MSG_RESULT(no)
