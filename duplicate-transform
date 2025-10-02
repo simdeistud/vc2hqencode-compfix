@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/bin/bash
 
 #*****************************************************************************
 #* duplicate-transform: A script that duplicates the transform headers
@@ -25,18 +25,9 @@
 #* For more information, contact us at ipstudio@bbc.co.uk.
 #*****************************************************************************
 
-import sys
-import re
+infilename="$1"
+outfilename="$2"
+inext="$3"
+outext="$4"
 
-infilename = sys.argv[1]
-outfilename = sys.argv[2]
-
-inext = sys.argv[3]
-outext = sys.argv[4]
-
-fi = open(infilename, 'r')
-fo = open(outfilename, 'w')
-
-for l in fi:
-    l = re.sub(inext, outext, l)
-    fo.write(l)
+sed "s/${inext}/${outext}/g" "$infilename" > "$outfilename"
